@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Read the contribution guide
+    url: https://github.com/brunotaisa01-source/power-automate-flow-engineering-kit/blob/main/CONTRIBUTING.md
+    about: Review the contribution, evidence, and public-data rules before opening an issue.
+  - name: Read the security policy and report privately
+    url: https://github.com/brunotaisa01-source/power-automate-flow-engineering-kit/blob/main/SECURITY.md
+    about: Use a private GitHub security advisory or private maintainer channel; do not post security details in a public issue.

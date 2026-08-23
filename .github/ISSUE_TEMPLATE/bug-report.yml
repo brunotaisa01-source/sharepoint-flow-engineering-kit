@@ -1,0 +1,66 @@
+name: Bug report
+description: Report a reproducible problem in the offline, synthetic validation path
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the kit. Keep this report public and sanitized.
+
+        If this is a security issue, stop and follow [SECURITY.md](https://github.com/brunotaisa01-source/power-automate-flow-engineering-kit/blob/main/SECURITY.md) instead. Do not include tenant data or private security details in this form.
+  - type: input
+    id: connector
+    attributes:
+      label: Connector or platform area
+      description: Name the connector or platform area involved. Use a product name, not a tenant-specific identifier.
+      placeholder: SharePoint, Dataverse, Power Apps, or connector-neutral validation
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence_class
+    attributes:
+      label: Evidence class
+      description: Choose the strongest evidence represented by this report. Provider or tenant evidence does not make a public issue safe for private data.
+      options:
+        - LOCAL_STATIC
+        - LOCAL_PACKAGE
+        - COMPILED_CLI
+        - RUNTIME_SYNTHETIC
+        - PROVIDER_OR_TENANT_EVIDENCE
+        - NOT_SURE
+    validations:
+      required: true
+  - type: textarea
+    id: local_command
+    attributes:
+      label: Exact local command
+      description: Paste the exact local command that reproduces the behavior. Prefer repository-relative paths and placeholders; do not include credentials, tokens, tenant URLs, or sensitive shell history.
+      placeholder: node packages/cli/dist/bin/spflow.js verify --root examples/minimal-public-app --offline --format text
+    validations:
+      required: true
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected behavior
+      description: State the deterministic result that should occur, including the relevant evidence boundary.
+      placeholder: The command should reject the synthetic fixture before any network operation.
+    validations:
+      required: true
+  - type: textarea
+    id: observed_behavior
+    attributes:
+      label: Observed behavior
+      description: State what actually happened and include only sanitized, minimal output.
+      placeholder: The command accepted the fixture and reported GREEN.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy_confirmation
+    attributes:
+      label: Public-data confirmation
+      description: Review the public-data rules before submitting.
+      options:
+        - label: I confirm this issue contains no tenant URL, credentials, emails, GUIDs, raw payloads, or production exports.
+          required: true
+    validations:
+      required: true

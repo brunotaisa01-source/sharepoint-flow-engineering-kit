@@ -1,0 +1,71 @@
+name: Lesson proposal
+description: Propose a sanitized RED/GREEN lesson for independent review
+title: "[Lesson]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Propose a reusable engineering invariant using synthetic or otherwise public-safe evidence.
+
+        A proposal is not an approval. Only reviewed registry promotion becomes a global instruction for future AI planning. Do not include tenant data, private findings, or security details here.
+  - type: input
+    id: connector_or_platform
+    attributes:
+      label: Connector or platform scope
+      description: Identify the connector or platform domain without naming a tenant, organization, or private project.
+      placeholder: Power Automate connector-neutral, SharePoint, Dataverse, or Power Apps
+    validations:
+      required: true
+  - type: textarea
+    id: sanitized_red
+    attributes:
+      label: Sanitized RED description
+      description: Describe the failing behavior with synthetic values, placeholders, and repository-relative paths only.
+      placeholder: A stale connection reference is accepted even though the normalized artifact points to a different declared binding.
+    validations:
+      required: true
+  - type: textarea
+    id: reusable_invariant
+    attributes:
+      label: Reusable invariant
+      description: State the connector-agnostic or connector-specific rule that should remain true.
+      placeholder: A successful connection status cannot authorize an artifact whose installed reference is not contract-bound.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_green
+    attributes:
+      label: Proposed GREEN behavior
+      description: Describe the executable behavior that should turn the RED case into GREEN, rather than only changing a message or label.
+      placeholder: The validator rejects the stale binding before network I/O and accepts the exact synthetic contract-bound binding.
+    validations:
+      required: true
+  - type: textarea
+    id: independent_positive_control
+    attributes:
+      label: Independent positive control
+      description: Give a structurally independent case that should pass and explain why it proves the invariant rather than copying the RED topology.
+      placeholder: A separate synthetic fixture uses an independently constructed contract and an exact matching binding.
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence_class
+    attributes:
+      label: Evidence classification
+      description: Say whether the finding is local synthetic or provider/tenant evidence. Provider/tenant evidence must remain separately sanitized and does not close a public runtime gate.
+      options:
+        - LOCAL_SYNTHETIC
+        - PROVIDER_OR_TENANT_EVIDENCE
+        - NOT_SURE
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy_confirmation
+    attributes:
+      label: Public-data confirmation
+      description: Review CONTRIBUTING.md and SECURITY.md before submitting.
+      options:
+        - label: I confirm this proposal contains no tenant URL, credentials, emails, GUIDs, raw payloads, or production exports.
+          required: true
+    validations:
+      required: true
