@@ -2,6 +2,28 @@
 
 Power Automate Flow Engineering Kit is a public, synthetic-data toolkit for designing and validating Power Automate and Power Platform applications across connector-backed systems such as SharePoint, Excel, Power Apps, Dataverse, Outlook, Graph, HTTP, SQL, and approvals.
 
+![Power Automate Flow Engineering Kit architecture](docs/assets/flow-engineering-kit-architecture.png)
+
+## Why this exists
+
+Power Automate failures often look green before they are trustworthy: a connection can be `Connected` while the installed reference is stale, or a flow can succeed without the intended semantic effect. This kit turns those failure modes into deterministic RED/GREEN checks that an AI or engineer can reuse across SharePoint, Excel, Dataverse, Outlook, Approvals, Power Apps, Graph, HTTP, SQL, and future connectors.
+
+## Test it in three minutes
+
+Start with the existing [Quick Start](#quick-start), run the local acceptance gate, and inspect the [multi-project control plane](docs/MULTI_PROJECT_CONTROL_PLANE.md). The public path is offline/read-only; a live run requires your own authenticated Power Platform tenant and connections.
+
+If this approach is useful, [star the repository](https://github.com/brunotaisa01-source/power-automate-flow-engineering-kit). Star if useful; open a [GitHub Discussion](https://github.com/brunotaisa01-source/power-automate-flow-engineering-kit/discussions) with a connector, failure mode, or improvement idea.
+
+## Connector matrix
+
+Use the [architecture connector-boundary matrix](docs/architecture/ARCHITECTURE.md#5-connector-boundary) to distinguish the current executable SharePoint reference from the connector-neutral profiles and documentation for Excel, Power Apps, Dataverse, Outlook, Graph, HTTP, SQL, approvals, and future connectors. Tenant runtime evidence remains `NOT_RUN` unless separately recorded.
+
+## Proof and boundaries
+
+The [GitHub Actions CI workflow](.github/workflows/ci.yml) matrix covers Ubuntu, macOS, and Windows. Local checks are synthetic and include the [approved global lesson registry](knowledge/self-improvement/registry.json) and [connector profiles](examples/minimal-public-app/connectors/); the [Dataverse + Power Automate flow runbook](docs/DATAVERSE_FLOW_RUNBOOK.md) describes the live boundary without providing tenant access. Live tenant/UAT/scanner boundaries remain explicit `NOT_RUN` gates, and local GREEN does not prove tenant execution, tenant-wide behavior, publication, or scanner PASS.
+
+This is a public source-available engineering kit under the [Personal and Internal Use License](LICENSE), not an OSI open-source license. Use [CONTRIBUTING.md](CONTRIBUTING.md) for changes, [SECURITY.md](SECURITY.md) for private vulnerability reports, and GitHub Discussions for questions or improvement ideas; no private contact data or support SLA is implied.
+
 The reference profile is:
 
 `frontend -> SharePoint lists -> Power Automate -> SharePoint -> frontend`
